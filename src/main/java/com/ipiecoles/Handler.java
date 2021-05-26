@@ -8,19 +8,21 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Handler implements RequestHandler<WeatherRequest, GatewayResponse> {
+public class Handler implements RequestHandler<GatewayRequest, GatewayResponse> {
     @Override
-    public GatewayResponse handleRequest(WeatherRequest o, Context context) {
+    public GatewayResponse handleRequest(GatewayRequest o, Context context) {
+        WeatherRequest weatherRequest = new Gson().fromJson(o.getBody(), WeatherRequest.class);
+        System.out.println("Ville : " + weatherRequest.getCity());
         WeatherService weatherService = new WeatherService();
         Weather weather = null;
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("Access-Control-Allow-Origin", "https://pjvilloud.github.io");
-        if (o == null || o.getCity() == null || o.getCity().isEmpty()) {
+        if (weatherRequest == null || weatherRequest.getCity() == null || weatherRequest.getCity().isEmpty()) {
             return new GatewayResponse("{\"error\":\"Pas de ville\"}", headers, 400);
         }
         try {
-            weather = weatherService.getWeatherOfTheCity(o.getCity());
+            weather = weatherService.getWeatherOfTheCity(weatherRequest.getCity());
         } catch (Exception exception) {
             // Gestion d'erreur
             System.out.println(exception.getMessage());
