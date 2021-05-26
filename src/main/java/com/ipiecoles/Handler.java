@@ -16,11 +16,11 @@ public class Handler implements RequestHandler<WeatherRequest, GatewayResponse> 
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("Access-Control-Allow-Origin", "https://pjvilloud.github.io");
-        if (o == null || o.getVille() == null || o.getVille().isEmpty()) {
+        if (o == null || o.getCity() == null || o.getCity().isEmpty()) {
             return new GatewayResponse("{\"error\":\"Pas de ville\"}", headers, 400);
         }
         try {
-            weather = weatherService.getWeatherOfTheCity(o.getVille());
+            weather = weatherService.getWeatherOfTheCity(o.getCity());
         } catch (Exception exception) {
             // Gestion d'erreur
             System.out.println(exception.getMessage());

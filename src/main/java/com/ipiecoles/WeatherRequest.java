@@ -1,13 +1,13 @@
 package com.ipiecoles;
 
 public class WeatherRequest {
-    private String ville;
+    private String city;
 
-    public String getVille() {
-        return ville;
+    public String getCity() {
+        return city;
     }
 
-    public void setVille(String ville) {
-        this.ville = ville;
+    public void setCity(String city) {
+        this.city = city;
     }
 }

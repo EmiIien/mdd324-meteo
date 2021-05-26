@@ -11,7 +11,7 @@ public class Main {
             e.printStackTrace();
         } */
         WeatherRequest weatherRequest = new WeatherRequest();
-        weatherRequest.setVille("Lyongagagagga");
+        weatherRequest.setCity("Lyongagagagga");
         System.out.println(new Handler().handleRequest(weatherRequest, null));
         //System.out.println(Date.from(Instant.ofEpochSecond(1621971476)).getHours() + ":" + Date.from(Instant.ofEpochSecond(1621971476)).getMinutes());
     }

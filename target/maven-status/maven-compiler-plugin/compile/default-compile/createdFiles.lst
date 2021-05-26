@@ -1,0 +1,7 @@
+com\ipiecoles\WeatherService.class
+com\ipiecoles\WeatherRequest.class
+com\ipiecoles\Main.class
+com\ipiecoles\WebUtils.class
+com\ipiecoles\Handler.class
+com\ipiecoles\GatewayResponse.class
+com\ipiecoles\Weather.class
